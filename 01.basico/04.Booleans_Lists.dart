@@ -1,7 +1,7 @@
 // BOOLEANS
 
 main() {
-  bool? isActive; // ademas de true y false toma datos null
+  bool? isActive; // ademas de true y false aloja valores null
   print(isActive);
 
   bool isOk = true; //declarando valor TRUE

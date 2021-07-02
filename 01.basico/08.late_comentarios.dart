@@ -26,4 +26,5 @@ main() {
   /// recibe [nombre] y [mensaje]
 
   saludar(int nombre, int mensaje) {}
+  ;
 }

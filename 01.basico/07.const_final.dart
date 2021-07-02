@@ -10,7 +10,7 @@ main() {
   List<String> b = const ['leche', 'queso', 'arepas'];
 
   a.add('huevos');
-  b.add('huevos');
+  b.add('huevos'); // muestra error si se modifica un CONST
 
   print(''' $a, $b''');
 }
