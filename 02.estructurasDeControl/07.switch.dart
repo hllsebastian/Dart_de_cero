@@ -19,7 +19,7 @@ import 'dart:math';
 main() {
   int rnd = Random().nextInt(7);
 
-  switch (rnd) {
+  switch (rnd) {  
     case 0:
       {
         print('Es domingo');
