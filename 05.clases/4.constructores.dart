@@ -25,7 +25,7 @@ class Carro {
                                   pueden ser definidos por posicion, nombre
                                   u opcionales */
 
-//          constructo con nombre  PENDIENTE POR RESOLVER
+//          constructor con nombre  PENDIENTE POR RESOLVER
   Carro.propietario2({this.marca}) {
     this._propietario = "Maria";
     this.marca        = marca;
