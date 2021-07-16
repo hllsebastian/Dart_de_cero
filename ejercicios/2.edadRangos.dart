@@ -12,41 +12,29 @@ según la edad es NIÑO porque tiene 4 años  */
 
 import 'dart:io';
 
-main() {
-  stdout.writeln('¿Cual es tú edad?');
+rangoEdad() {
+  stdout.writeln('Ingrese un rango de edad desde -0.0 hasta 21');
 
-  double e = double.parse(stdin.readLineSync() ?? '0');
-  int edad = e.round();
+  double edad = double.parse(stdin.readLineSync() ?? '0');
 
-  switch (edad) {
-    case 0:
-      {
-        String respuesta = edad >= -0.0 && edad <= 0.9 ? 'Es prenatal' : ' ';
-        print(respuesta);
-      }
-      break;
-
-    case 1:
-      {
-       String respuesta = edad >= 0.0 && edad <= 1.0 ? 'Es un baby' : ' ';
-       print(respuesta);
-      }
-      break;
-
-    case 2:
-      {
-       String respuesta = edad > 2 && edad < 6 ? 'Es niño porque tiene $edad años' : ' ';
-       print(respuesta);
-      }
-      break;
-
-
-
-
-
-      
-
-    default:
-      print('Ingrese una edad correcta');
+  if (edad == -0.0 && edad < 1.0) {
+    print('Es un prenatal');
+  } else if (edad >= 0.0 && edad < 0.9) {
+    print('Es un bebe');
+  } else if (edad > 2 && edad < 6) {
+    print('La categoria segun la edad es niño porque tiene $edad años');
+  } else if (edad > 4 && edad < 13) {
+    print('Es un niño de escuela primaria');
+  } else if (edad > 11 && edad < 18) {
+    print('Es un adolescente');
+  } else if (edad > 17 && edad < 22) {
+    print('Es un adulto joven');
+  } else {
+    stdout.write('Error!!\n');
+    rangoEdad();
   }
+}
+
+main() {
+  rangoEdad();
 }

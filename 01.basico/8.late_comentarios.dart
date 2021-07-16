@@ -1,4 +1,4 @@
-/* la palabra reservada LATE sirve para indicar que despues se iniciliazada
+/* la palabra reservada LATE sirve para indicar que despues se iniciliazara
   una variable, esta cambiara su valor.. sera util para manejar clases */
 
 main() {
@@ -8,7 +8,7 @@ main() {
 
   print(z);
 
-/*  se puede usar tripel / para hacer comentarios donde se pueda a hacer 
+/*  se puede usar triple / para hacer comentarios donde se pueda a hacer 
     referencia a partes del codigo 
     
     tambien se puede usar el 
