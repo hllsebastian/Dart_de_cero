@@ -14,22 +14,22 @@ import 'dart:io';
 
 
 edadEtapa() {
-
   stdout.writeln('Ingrese un rango de edad desde 0.0 hasta 21');
 
   double edad = double.parse(stdin.readLineSync() ?? '0');
 
-  if (edad <= 0.9) {
+  if (edad >= -0.0 && edad < -0.9) {
     print('Es prenatal');
-    } else if (edad < 1.1) {
+    } else if (edad >= 0.0 && edad < 1.1) {
       print('Es un baby');
-    } else if (edad < 5) {
-      print('Es un niño pequeño porque tiene $edad años');
-    } else if (edad < 13) {
+    } else if (edad > 1.0 && edad <4) {
+      print(
+          'La categoria segun la edad es niño pequeño porque tiene $edad años');
+    } else if (edad > 3.9 && edad < 13) {
       print('Es un niño de escuela primaria');
-    } else if (edad < 18) {
+    } else if (edad > 11.9 && edad < 18) {
       print('Es un adolescente');
-    } else if (edad < 22) {
+    } else if (edad > 17.9 && edad < 22) {
       print('Es un adulto joven');
     } else {
       stdout.write('Error!!\n');
@@ -39,4 +39,5 @@ edadEtapa() {
 
 main() {
   edadEtapa();
+  
 }
