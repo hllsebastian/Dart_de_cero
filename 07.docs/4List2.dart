@@ -25,6 +25,16 @@ main() {
   print('ordenar elementos al reves: reversed -> ${lista3.reversed} ');
   print('''cuando un grupo de elementos aparece con () es un iterable, como 
   el ejemplo del reversed''');
-  print('regresar el reversed al list: toList -> ${lista3.reversed.toList()}');
-  
+  print(
+      'regresar el reversed al list: toList -> ${lista3.reversed.toList()}\n');
+
+  nombres.forEach((nombre) {
+    nombre = nombre.toUpperCase();
+    print('recorriendo los elementos de una lista: forEach -> $nombre');
+  });
+
+  final newList = nombres.map((nombre) => nombre.toUpperCase()).toList();
+  print('''creando nueva lista a partir de otra, luego de transformarla
+  con toUpperCase, para que su producto no sea un elemento iterable:
+        $newList''');
 }
