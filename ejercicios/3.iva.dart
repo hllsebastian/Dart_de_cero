@@ -30,21 +30,21 @@ paisValor(dynamic pais, dynamic valor) {
     case "Argentina":
       {
         double iva = valor * 0.20;
-        print('En $pais el IVA es del $iva');
+        print('En $pais el IVA es de $iva');
       }
       break;
 
     case "Chile":
       {
         double iva = valor * 0.09;
-        print('En $pais el IVA es del $iva');
+        print('En $pais el IVA es de $iva');
       }
       break;
 
     case "Colombia":
       {
         double iva = valor * 0.19;
-        print('En $pais el IVA es del $iva');
+        print('En $pais el IVA es de $iva');
       }
       break;
 

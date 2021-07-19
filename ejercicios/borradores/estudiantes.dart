@@ -11,9 +11,12 @@
 import 'dart:io';
 
 
+class Estudiante {
 
+  String? nombre;
+  double? nota;
 
-
+}
 
 
 ingreso (String nombre, double nota) {
