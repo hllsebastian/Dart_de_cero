@@ -13,17 +13,19 @@ teniendo en cuenta que vamos a manejar 3 países:
 
 import 'dart:io';
 
-paisValor(dynamic pais, dynamic valor) {
+paisValor(String pais, dynamic valor) {
 
   stdout.writeln('Ingrese el pais');
-  pais = stdin.readLineSync();
+  pais = stdin.readLineSync() ?? '';
 
-  if (pais != "Argentina" && pais != "Chile" && pais != "Colombia") {
-    
-  } else {
-    stdout.writeln('Ingrese el valor');
-    valor = double.parse(stdin.readLineSync() ?? '0');
-  }
+  if (pais != "Argentina" || pais != "Chile" || pais != "Colombia") {
+
+    } else {
+
+      stdout.writeln('Ingrese el valor');
+      valor = double.parse(stdin.readLineSync() ?? '');
+    }
+
 
   switch (pais) {
     case "Argentina":
@@ -48,12 +50,11 @@ paisValor(dynamic pais, dynamic valor) {
       break;
 
     default:
-      print(
-          'ERROR!');
+      print('ERROR!');
       paisValor(pais, valor);
   }
 }
 
 main() {
-  paisValor('', '');
+  paisValor('pais', '');
 }

@@ -18,7 +18,7 @@ main() {
 
   List<String> villanos = ['Lex', 'Red Skull', 'Doom'];
 
-  villanos[1] = 'Dr. Octopus'; /* cambiand un valor en listado*/
+  villanos[1] = 'Dr. Octopus'; /* cambiando un valor en listado*/
 
   print(villanos);
 
