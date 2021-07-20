@@ -21,7 +21,7 @@ class Carro {
     this.puertas = puertas;
   } */
   Carro(this._propietario, this.marca, this.puertas);
-  /* Estos argumentos
+                                 /* Estos argumentos
                                   pueden ser definidos por posicion, nombre
                                   u opcionales */
 
