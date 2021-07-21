@@ -15,32 +15,32 @@ import 'dart:io';
   Estudiante(this.nombre, this.nota);
 }
  */
-ingreso(String nombre) {
-  stdout.writeln('Ingrese el nombre del estudiante');
-  nombre = stdin.readLineSync() ?? '';
+ingreso(dynamic nombre, dynamic nota) {
+  String continuar = 's';
 
-  stdout.writeln('1 para guardar');
-  final String? guardar;
-  guardar = stdin.readLineSync();
+  final lista = <dynamic>[
+    <dynamic, Object>{'nombre': nombre, 'nota': nota}
+  ];
 
-      final lista = <dynamic>[
-    <String, dynamic>{'nombre': nombre}];
+  do {
+    stdout.writeln('Ingrese el nombre del estudiante');
+    nombre = stdin.readLineSync() ?? '';
 
-  if (guardar == '1') {
-    lista.add(nombre);
+    stdout.writeln('\n Ingrese nota del estudiante');
+    nota = (stdin.readLineSync() ?? '');
 
-    stdout.writeln('1 para ingresar otro estudiante, si no cualquier boton');
-    String? continuar;
-    continuar = stdin.readLineSync();
+    lista.add({'nombre': nombre, 'nota': nota});
 
-    if (continuar == '1') {
-      ingreso(nombre);
-    } else {
+    stdout.writeln(
+        '\n *****Digite 1 para continuar \n *****Digite cualquier boton para mostrar lista de estudiantes');
+    continuar = stdin.readLineSync() ?? 'n';
+  } while (continuar == '1');
+
+  lista.forEach((nota) {
+    if (nota > 3) {
       print(lista);
     }
-  }
-
-
+  });
 }
 
 /* notas(String nombre, double nota) {
@@ -58,5 +58,5 @@ ingreso(String nombre) {
 } */
 
 main() {
-  ingreso('nombre');
+  ingreso('nombre', 0);
 }
