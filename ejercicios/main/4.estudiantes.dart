@@ -14,61 +14,64 @@ class Estudiante {
   double? nota;
   String? tipo;
 
-
   Estudiante.paso(nombre, nota) {
     this.nombre = nombre;
-    this.nota   = nota;
-    this.tipo   = ' -> Corono';
+    this.nota = nota;
+    this.tipo = ' -> Corono';
   }
   Estudiante.recuperacion(nombre, nota) {
     this.nombre = nombre;
-    this.nota   = nota;
-    this.tipo   = ' -> En recuperación';
+    this.nota = nota;
+    this.tipo = ' -> En recuperación';
   }
   Estudiante.yaper(nombre, nota) {
     this.nombre = nombre;
-    this.nota   = nota;
-    this.tipo   = ' -> Yaper  :(';
+    this.nota = nota;
+    this.tipo = ' -> Yaper  :(';
   }
-   Estudiante.error(nombre, nota, tipo) {
+  Estudiante.error(nombre, nota, tipo) {
     this.nombre = nombre;
-    this.nota   = nota;
-    this.tipo   = 'ERROR \n Ingrese una nota entre 0.0 y 5.0';
+    this.nota = nota;
+    this.tipo = 'ERROR \n Ingrese una nota entre 0.0 y 5.0';
     ingreso(nombre, nota, tipo);
   }
 
-
   factory Estudiante(String nombre, double nota, String tipo) {
-    if (nota > 3.8 && nota <5.1 ) {
+    if (nota > 3.8 && nota < 5.1) {
       return Estudiante.paso(nombre, nota);
-    }else if (nota < 3.9){
+    } else if (nota < 3.9) {
       return Estudiante.recuperacion(nombre, nota);
-    }else if (nota < 2.5){
+    } else if (nota < 2.5) {
       return Estudiante.yaper(nombre, nota);
-    }else {
+    } else {
       return Estudiante.error(nombre, nota, tipo);
     }
   }
 
   String toString() => '$nombre $nota $tipo';
-  
+
 }
 
 
 ingreso(String nombre, double nota, String tipo) {
   
   final lista = <dynamic>[];
-  
   String? next;
+  
   do {
     stdout.writeln('\nIngrese el nombre del estudiante');
     nombre = stdin.readLineSync() ?? '';
 
     stdout.writeln('\n Ingrese nota del estudiante');
     nota = double.parse(stdin.readLineSync() ?? '');
-
-    final estudiante = Estudiante(nombre, nota, tipo);
-    lista.add(estudiante);
+    if (nota < 0.0 && nota > 5.0) {
+      print('ERROR!! \n Ingrese una nota entre 0.0 y 5.0. Vuelva a intentarlo');
+      ingreso(nombre, nota, tipo);
+    }else
+    {
+      final estudiante = Estudiante(nombre, nota, tipo);
+      lista.add(estudiante);
+    }
 
     stdout.writeln(
         '\n*** Para continuar ingrese "1" \n ***Para imprimir listado ingrese cualquier boton');
@@ -77,7 +80,6 @@ ingreso(String nombre, double nota, String tipo) {
 
   print(lista);
 }
-
 
 
 main() {
