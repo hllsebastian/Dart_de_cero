@@ -11,28 +11,28 @@ import 'dart:io';
 
 class Estudiante {
   String? nombre;
-  double? nota;
-  String? tipo;
+  double?   nota;
+  String?   tipo;
 
   Estudiante.paso(nombre, nota) {
-    this.nombre = nombre;
-    this.nota = nota;
-    this.tipo = ' -> Corono';
+    this.nombre =       nombre;
+    this.nota   =         nota;
+    this.tipo   = ' -> Corono';
   }
   Estudiante.recuperacion(nombre, nota) {
-    this.nombre = nombre;
-    this.nota = nota;
-    this.tipo = ' -> En recuperación';
+    this.nombre =                nombre;
+    this.nota   =                  nota;
+    this.tipo   = ' -> En recuperación';
   }
   Estudiante.yaper(nombre, nota) {
-    this.nombre = nombre;
-    this.nota = nota;
-    this.tipo = ' -> Yaper  :(';
+    this.nombre =          nombre;
+    this.nota   =            nota;
+    this.tipo   = ' -> Yaper  :(';
   }
   Estudiante.error(nombre, nota, tipo) {
-    this.nombre = nombre;
-    this.nota = nota;
-    this.tipo = 'ERROR \n Ingrese una nota entre 0.0 y 5.0';
+    this.nombre =        nombre;
+    this.nota   =          nota;
+    this.tipo   = 'ERROR \n Ingrese una nota entre 0.0 y 5.0';
     ingreso(nombre, nota, tipo);
   }
 
@@ -60,18 +60,18 @@ ingreso(String nombre, double nota, String tipo) {
   
   do {
     stdout.writeln('\nIngrese el nombre del estudiante');
-    nombre = stdin.readLineSync() ?? '';
+      nombre = stdin.readLineSync() ?? '';
 
     stdout.writeln('\n Ingrese nota del estudiante');
-    nota = double.parse(stdin.readLineSync() ?? '');
-    if (nota < 0.0 && nota > 5.0) {
-      print('ERROR!! \n Ingrese una nota entre 0.0 y 5.0. Vuelva a intentarlo');
-      ingreso(nombre, nota, tipo);
-    }else
-    {
+     nota = double.parse(stdin.readLineSync() ?? '');
+     if (nota < 0.0 && nota > 5.0) {
+       print('ERROR!! \n Ingrese una nota entre 0.0 y 5.0. Vuelva a intentarlo');
+       ingreso(nombre, nota, tipo);
+     }else
+     {
       final estudiante = Estudiante(nombre, nota, tipo);
       lista.add(estudiante);
-    }
+     }
 
     stdout.writeln(
         '\n*** Para continuar ingrese "1" \n ***Para imprimir listado ingrese cualquier boton');

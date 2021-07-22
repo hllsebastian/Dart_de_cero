@@ -23,23 +23,36 @@ import 'dart:io';
 } */
 
 class Mercado {
-  String? producto;
-  double? valor;
-  double? total;
-  List<dynamic> lista = [];
+  String?  producto;
+  double  valor = 0;
+  double    iva = 0;
+  double  bruto = 0;
+  double?      neto;
+  List<dynamic> list = [];
 
-  Mercado.lista([this.producto, this.valor]);
+  Mercado(this.producto, this.valor) {
+    this.producto =      producto;
+    this.valor    =         valor;
+    this.iva      =  valor * 0.19;
+    this.bruto    =         valor;
+    this.neto     =   bruto + iva;
+  }
 
-  get info () => print(lista);
+  
+
 
   @override
-  String toString() => '$producto $valor $total $lista';
+  String toString() => ''' 
+           
+      PRODUCTO      VALOR       IVA       VALOR BRUTO     VALOR NETO 
+      $producto        $valor     $iva        $bruto           $neto''';
 }
 
 mercado(String producto, double valor) {
-  //final lista = <dynamic>[];
-  
+  final lista = <dynamic>[];
   String next;
+  //dynamic listaMerc = mercado;
+
   do {
     stdout.writeln('¿Cual es el nombre del producto?');
     producto = stdin.readLineSync() ?? '';
@@ -47,14 +60,15 @@ mercado(String producto, double valor) {
     stdout.writeln('Ingrese el valor');
     valor = double.parse(stdin.readLineSync() ?? '');
 
-    final estudiante = Mercado;
-    Mercado.lista(producto, valor);
+    final mercado = Mercado(producto, valor);
+    lista.add(mercado);
 
     stdout
         .writeln('Digite 1 para continuar o cualquier boto para mostrar lista');
     next = stdin.readLineSync() ?? '';
   } while (next == '1');
 
+  print(lista);
 }
 
 main() {
