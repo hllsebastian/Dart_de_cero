@@ -16,11 +16,10 @@ import 'dart:io';
 }
  */
 ingreso(dynamic nombre, dynamic nota) {
+  
   String continuar = 's';
 
-  final lista = <dynamic>[
-    <dynamic, Object>{'nombre': nombre, 'nota': nota}
-  ];
+  final lista = <dynamic>[<dynamic, Object>{'nombre': nombre, 'nota': nota}];
 
   do {
     stdout.writeln('Ingrese el nombre del estudiante');
@@ -36,11 +35,12 @@ ingreso(dynamic nombre, dynamic nota) {
     continuar = stdin.readLineSync() ?? 'n';
   } while (continuar == '1');
 
-  lista.forEach((nota) {
+   lista.forEach((nota) {
     if (nota > 3) {
       print(lista);
     }
   });
+
 }
 
 /* notas(String nombre, double nota) {

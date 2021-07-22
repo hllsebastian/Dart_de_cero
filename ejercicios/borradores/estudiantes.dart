@@ -9,48 +9,77 @@
 import 'dart:io';
 
 
-/* class Estudiante {
+class Estudiante {
   String? nombre;
   double? nota;
+  String? tipo;
 
-  Estudiante(this.nombre, this.nota);
-}
- */
-ingreso(String nombre, double nota, String continuar) {  
 
-  final lista = <dynamic>[<String, dynamic>{'nombre': nombre, 'nota': nota}];
-  
-
-  stdout.writeln('Ingrese el nombre del estudiante');
-  nombre = stdin.readLineSync() ?? '';
-
-  stdout.writeln('Ingrese nota');
-  nota = double.parse(stdin.readLineSync() ?? '');
-  
-  lista.add({'nombre': nombre, 'nota': nota});
-  
-  stdout.writeln(
-      'para ingresar nuevo estudiante digite 1, de lo contrario digite cualquier boton');
-  continuar = stdin.readLineSync() ?? '';
-
-  continuar == '1' ? ingreso(nombre, nota, continuar) : print(lista);
-  
-}
-
-/* notas(String nombre, double nota) {
-  if (nota > 3.8 && nota < 5.1) {
-    print('$nombre paso con una nota de $nota');
-  } else if (nota < 3.9) {
-    print('$nombre recuperacion');
-  } else if (nota < 2.5) {
-    print('$nombre perdio');
-  } else {
-    print(
-        'ERROR!! \n Ingrese una nota entre 0.0 y 5.0. Vuelva a intentarlo...');
-    ingreso(nombre, nota, '');
+  Estudiante.paso(nombre, nota) {
+    this.nombre = nombre;
+    this.nota   = nota;
+    this.tipo   = ' -> Corono';
   }
-} */
+  Estudiante.recuperacion(nombre, nota) {
+    this.nombre = nombre;
+    this.nota   = nota;
+    this.tipo   = ' -> En recuperación';
+  }
+  Estudiante.yaper(nombre, nota) {
+    this.nombre = nombre;
+    this.nota   = nota;
+    this.tipo   = ' -> Yaper  :(';
+  }
+   Estudiante.error(nombre, nota, tipo) {
+    this.nombre = nombre;
+    this.nota   = nota;
+    this.tipo   = 'ERROR \n Ingrese una nota entre 0.0 y 5.0';
+    ingreso(nombre, nota, tipo);
+  }
+
+
+  factory Estudiante(String nombre, double nota, String tipo) {
+    if (nota > 3.8 && nota <5.1 ) {
+      return Estudiante.paso(nombre, nota);
+    }else if (nota < 3.9){
+      return Estudiante.recuperacion(nombre, nota);
+    }else if (nota < 2.5){
+      return Estudiante.yaper(nombre, nota);
+    }else {
+      return Estudiante.error(nombre, nota, tipo);
+    }
+  }
+
+  String toString() => '$nombre $nota $tipo';
+  
+}
+
+
+ingreso(String nombre, double nota, String tipo) {
+  
+  final lista = <dynamic>[];
+  
+  String? next;
+  do {
+    stdout.writeln('\nIngrese el nombre del estudiante');
+    nombre = stdin.readLineSync() ?? '';
+
+    stdout.writeln('\n Ingrese nota del estudiante');
+    nota = double.parse(stdin.readLineSync() ?? '');
+
+    final estudiante = Estudiante(nombre, nota, tipo);
+    lista.add(estudiante);
+
+    stdout.writeln(
+        '\n*** Para continuar ingrese "1" \n ***Para imprimir listado ingrese cualquier boton');
+    next = stdin.readLineSync();
+  } while (next == '1');
+
+  print(lista);
+}
+
+
 
 main() {
-  ingreso('nombre', 0, '');
+  ingreso('', 0,'');
 }
