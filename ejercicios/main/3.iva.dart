@@ -14,7 +14,7 @@ teniendo en cuenta que vamos a manejar 3 países:
 
 import 'dart:io';
 
-paisValor(dynamic pais, dynamic valor) {
+paisValor(dynamic pais, double valor) {
 
   stdout.writeln('Ingrese uno de los siguientes paises: Argentina (she), Chile (weon), Colombia (pa)' );
   pais = stdin.readLineSync();
@@ -30,21 +30,21 @@ paisValor(dynamic pais, dynamic valor) {
     case "Argentina":
       {
         double iva = valor * 0.20;
-        print('En $pais el IVA es de $iva');
+        print('En $pais el IVA es de \$$iva');
       }
       break;
 
     case "Chile":
       {
         double iva = valor * 0.09;
-        print('En $pais el IVA es de $iva');
+        print('En $pais el IVA es de \$$iva');
       }
       break;
 
     case "Colombia":
       {
         double iva = valor * 0.19;
-        print('En $pais el IVA es de $iva');
+        print('En $pais el IVA es de \$$iva');
       }
       break;
 
@@ -56,5 +56,5 @@ paisValor(dynamic pais, dynamic valor) {
 }
 
 main() {
-  paisValor('', '');
+  paisValor('', 0);
 }
