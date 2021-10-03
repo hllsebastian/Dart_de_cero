@@ -8,7 +8,6 @@
 • Se debe crear una funcionalidad que permita listar todos los productos
   ordenados de mayor a menor precio que fueron incluidos en el mercado.  */
 
-
 import 'dart:io';
 
 /* class Lista {
@@ -21,44 +20,41 @@ import 'dart:io';
 }
  */
 
-                        /*se declara la clase 'Mercado' con el constructor que 
+/*se declara la clase 'Mercado' con el constructor que 
                           ayuda a definir las propiedades de iva, valores bruto 
                           y neto de cada producto
-                         */  
+                         */
 class Mercado {
   String? producto;
   double valor = 0;
-  double iva = 0;
+  double iva   = 0;
   double bruto = 0;
   double? neto;
   List<dynamic>? lista;
 
   Mercado(this.producto, this.valor) {
     this.producto = producto;
-    this.valor = valor;
-    this.iva = valor * 0.19;
-    this.bruto = valor;
-    this.neto = bruto + iva;
+    this.valor    = valor;
+    this.iva      = valor * 0.19;
+    this.bruto    = valor;
+    this.neto     = bruto + iva;
   }
 
-  @override
+/*   @override
   String toString() => ''' 
            
       PRODUCTO      VALOR       IVA       VALOR BRUTO     VALOR NETO 
-      $producto        $valor     $iva        $bruto           $neto''';
+      $producto        $valor     $iva        $bruto           $neto'''; */
 }
 
-
-                /* funcion listado que llamara el main. Aca se ingresara
+/* funcion listado que llamara el main. Aca se ingresara
                    el nombre del producto y el valor, que seran guardados en
                    un listado tipo mapa, al finalizar su ejecucion imprimira 
                    el listado. */
 
 listado(String producto, double valor) {
-  
   String next;
   final lista = <Map>[];
-
 
   do {
     stdout.writeln('¿Cual es el nombre del producto?');
@@ -67,30 +63,29 @@ listado(String producto, double valor) {
     stdout.writeln('Ingrese el valor');
     valor = double.parse(stdin.readLineSync() ?? '');
 
-
     final mercado = Mercado(producto, valor);
-    lista.add({       
+    lista.add({
       'producto': mercado.producto,
-      'valor'   :    mercado.valor,
-      'iva'     :      mercado.iva,
-      'bruto'   :     mercado.neto,
-      'neto'    :     mercado.neto,
+      'valor'   : mercado.valor,
+      'iva'     : mercado.iva,
+      'bruto'   : mercado.bruto,
+      'neto'    : mercado.neto,
     });
 
-  
-    stdout.writeln('Digite 1 para continuar o cualquier botón para mostrar lista');
+    stdout.writeln(
+        'Digite 1 para continuar o cualquier botón para mostrar lista');
     next = stdin.readLineSync() ?? '';
   } while (next == '1');
 
-  /*   for (Map l in lista) {
-    print(l['bruto']);
-  } */
+  double total = 0;
+  for (var element in lista) {
+    total = total + element.values.last;
 
-  print(lista);
-  
-  
+    print(element);
+  }
+  print("El total a pagar seria:  \$${total}");
 }
 
 main() {
   listado('', 0);
-}  
+}
